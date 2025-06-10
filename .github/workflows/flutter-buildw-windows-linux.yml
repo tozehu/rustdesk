@@ -1,4 +1,4 @@
-name: Build the flutter version of the RustDesk
+name: Build the flutter version windows linux of the RustDesk
 
 on:
   workflow_call:
@@ -49,8 +49,8 @@ env:
   RS_PUB_KEY: "${{ secrets.RS_PUB_KEY }}"
   RENDEZVOUS_SERVER: "${{ secrets.RENDEZVOUS_SERVER }}"
   API_SERVER: "${{ secrets.API_SERVER }}"
-  UPLOAD_ARTIFACT: "${{ inputs.upload-artifact }}"
-  SIGN_BASE_URL: "${{ secrets.SIGN_BASE_URL }}"
+  #UPLOAD_ARTIFACT: "${{ inputs.upload-artifact }}"
+  #SIGN_BASE_URL: "${{ secrets.SIGN_BASE_URL }}"
 
 
 
