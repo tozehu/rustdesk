@@ -107,7 +107,7 @@ impl PluginNativeUIHandler {
     /// [Arguments]
     /// @param cb: the function address with type [OnUIReturnCallback].
     /// @param user_data: the function will be called with this value.
-    fn select_peers_async(&self, cb: u64, user_data: u64) {
+    /*fn select_peers_async(&self, cb: u64, user_data: u64) {
         let mut param = HashMap::new();
         param.insert("name", json!("native_ui"));
         param.insert("action", json!("select_peers"));
@@ -117,7 +117,14 @@ impl PluginNativeUIHandler {
             APP_TYPE_MAIN,
             serde_json::to_string(&param).unwrap_or("".to_string()),
         );
+    }*/
+    fn select_peers_async(&self, cb: u64, user_data: u64) {
+        unsafe {
+        let cb_func: super::OnUIReturnCallback = std::mem::transmute(cb);
+        cb_func(0, std::ptr::null(), 0, user_data as _);
+        }
     }
+
 
     /// Call with method `register_ui_entry` and the following json:
     /// ```
